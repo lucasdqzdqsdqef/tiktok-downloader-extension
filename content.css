@@ -1,0 +1,119 @@
+.tt-download-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  margin-right: 12px; /* For horizontal layouts */
+  position: relative;
+  z-index: 99999;
+}
+
+.tt-download-btn {
+  background-color: transparent;
+  color: white;
+  border: none;
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  padding: 0;
+  border-radius: 12px;
+}
+
+.tt-download-btn:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.tt-download-btn svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+}
+
+.tt-download-menu {
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  background: rgba(25, 25, 32, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  margin-top: 0;
+  padding: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  flex-direction: column;
+  min-width: 220px;
+  position: absolute;
+  right: 0;
+  left: auto;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  gap: 4px;
+}
+
+/* Position: Dropdown (default, space below) */
+.tt-download-container[data-position="down"] .tt-download-menu {
+  top: calc(100% + 8px);
+  bottom: auto;
+  transform: translateY(-15px);
+}
+.tt-download-container[data-position="down"] .tt-download-menu.show {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Position: Pop-up (for when button is near bottom of screen) */
+.tt-download-container[data-position="up"] .tt-download-menu {
+  bottom: calc(100% + 8px);
+  top: auto;
+  transform: translateY(15px);
+}
+.tt-download-container[data-position="up"] .tt-download-menu.show {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.tt-download-menu.show {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.tt-menu-item {
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #ffffff;
+  text-align: left;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.tt-menu-item:hover {
+  background: rgba(254, 44, 85, 0.15);
+  color: #fe2c55;
+  transform: translateX(4px);
+}
+
+.tt-menu-item.loading {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  background: transparent !important;
+  color: #8e8e9e !important;
+}
