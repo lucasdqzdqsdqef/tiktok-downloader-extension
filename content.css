@@ -39,52 +39,26 @@
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
-  background: rgba(25, 25, 32, 0.7);
+  background: rgba(25, 25, 32, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
   border-radius: 16px;
-  margin-top: 0;
   padding: 8px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   flex-direction: column;
   min-width: 220px;
-  position: absolute;
-  right: 0;
-  left: auto;
+  position: fixed;
+  z-index: 2147483647;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   gap: 4px;
-}
-
-/* Position: Dropdown (default, space below) */
-.tt-download-container[data-position="down"] .tt-download-menu {
-  top: calc(100% + 8px);
-  bottom: auto;
-  transform: translateY(-15px);
-}
-.tt-download-container[data-position="down"] .tt-download-menu.show {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-/* Position: Pop-up (for when button is near bottom of screen) */
-.tt-download-container[data-position="up"] .tt-download-menu {
-  bottom: calc(100% + 8px);
-  top: auto;
-  transform: translateY(15px);
-}
-.tt-download-container[data-position="up"] .tt-download-menu.show {
-  visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
+  transform: scale(0.9);
 }
 
 .tt-download-menu.show {
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
+  transform: scale(1);
 }
 
 .tt-menu-item {
@@ -117,3 +91,44 @@
   background: transparent !important;
   color: #8e8e9e !important;
 }
+
+/* Profile Grid Button Styles */
+.tt-grid-download-container {
+    position: absolute !important;
+    top: 8px;
+    right: 8px;
+    margin: 0 !important;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2147483647;
+}
+
+/* Show button on hover of the video thumbnail, or keep it open if menu is active */
+[data-e2e="user-post-item"]:hover .tt-grid-download-container,
+div[class*="DivItemContainerForProfile"]:hover .tt-grid-download-container,
+.tt-grid-download-container.menu-open {
+    opacity: 1;
+}
+
+.tt-grid-download-btn {
+    background-color: rgba(25, 25, 32, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.tt-grid-download-btn:hover {
+    transform: scale(1.1) rotate(5deg);
+    background-color: rgba(25, 25, 32, 0.8);
+}
+
