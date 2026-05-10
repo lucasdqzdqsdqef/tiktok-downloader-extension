@@ -1,6 +1,6 @@
 How to Install the TikTok Downloader
-Open the Extensions Page:
 
+Open the Extensions Page:
 Open Google Chrome (or any Chromium-based browser like Brave or Edge).
 Type chrome://extensions/ into the URL bar and press Enter.
 Enable Developer Mode:
